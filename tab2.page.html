@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <!--Interpolated to easily change naming-->
+      <h2>{{title}}</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><h2 >{{title}}</h2></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!--Body-->
+  <!--Content being displayed. ion scroll-->
+  <ion-content>
+      <!-- Searchbar with a placeholder -->
+      <ion-searchbar placeholder ={{search_message}}></ion-searchbar>
+      <!--title of content-->
+      <h2 class="no-item">{{headline}}</h2>
+      <!--list generated from TS file-->
+      <ion-list *ngFor="let item of loadItems()">
+          <h3>{{item.title}}</h3>
+          <h5>By: {{item.author}}</h5>
+      </ion-list>
+
+      <!--FAB for options-->
+      <!-- fab placed to the top end -->
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="optionFunction()">
+          <ion-icon name="options-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  </ion-content>
+
+  
+  <app-explore-container name="{{title}} page"></app-explore-container>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <!--Interpolation for changing title-->
+      <h2>{{title}}</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><h2>{{title}}</h2></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!--Line breaks for styling purposes-->
+  <hr><hr><hr><hr><hr>
+  <!-- Inputs with labels -->
+  <!-- Input with placeholder -->
+  <ion-item></ion-item>
+  <ion-item>
+    <ion-label position="floating"><h3>Enter your username or email</h3></ion-label>
+    <ion-input class="sign_in"></ion-input>
+  </ion-item>
+  <!--input for password and text is hidden-->
+  <ion-item>
+    <ion-label position="floating"><h3>Enter your password</h3></ion-label>
+    <ion-input class="hide_password"></ion-input>
+  </ion-item>
+  <!--Sign in button and create an account button-->
+  <h4 class="sign_in">
+    <ion-button (click)="signIn()">Sign In</ion-button>
+    <ion-button (click)="createAccount()">Create an Acconnt</ion-button>
+    Don't have an account?
+  </h4>
+
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon (click)="takePhoto()" name="camera-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <app-explore-container name="{{title}} page"></app-explore-container>
+</ion-content>

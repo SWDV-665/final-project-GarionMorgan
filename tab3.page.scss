@@ -1,0 +1,28 @@
+//colors used in themeing
+$firstColor: #1f8be9;
+$secondColor: #e9d9cb;
+$thirdColor: #e9af7e;
+$fourthColor: #7eb7e9;
+$fifthColor: #e99347;
+$trashColor: rgba(255, 0, 0, 0.911);
+//header styling for tab3
+h2 {
+    color: $fourthColor;
+}
+h3 {
+    color: $firstColor;
+    text-align: center;
+}
+h4 {
+    color: $fifthColor;
+}
+.sign_in {
+    text-align: center;
+}
+//hides text
+.hide_password {
+    color: transparent;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}

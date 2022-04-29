@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <!--Interpolated and scss properties on h2-->
+      <h2>{{title}}</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><h2>{{title}}</h2></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--Body-->
+  <!--Loads items in cart, if empty display message, otherwise display items with sliding option functionality-->
+  <h2 class ='no-item' *ngIf='loadItems().length === 0'>
+    Your cart is empty!
+  </h2>
+  <!--beginning of list-->
+  <ion-list>
+    <!--sliding functionality-->
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
+      <!--add item to list-->
+      <ion-item>
+        <!--naming item-->
+        <ion-label>
+          <h3>{{item.book}}</h3>
+          <h4>By: {{item.author}}</h4>
+          <h5>{{item.quantity}}</h5>
+        </ion-label>
+      </ion-item>
+      <!--sliding capabilities-->
+      <!--removing item from list-->
+      <ion-item-options side="end">
+          <button class="removeClass" (click) ="removeItem(item, i)">
+            <ion-icon name="trash"></ion-icon>
+            <p>Delete</p>
+          </button>
+      </ion-item-options>
+      <!--front sliding-->
+      <ion-item-options side="start">
+        <!--Share button-->
+        <button class="shareClass" (click) = "shareItem(item, i)">
+          <ion-icon name="share-outline"></ion-icon>
+          <p>Share</p>
+        </button>
+        <!--edit button-->
+        <button class="editClass" (click) = "editItem(item, i)">
+          <ion-icon name="open-outline"></ion-icon>
+          <p>Edit Item </p>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Fixed Floating Action Button that does not scroll with the content starts at the bottom-->
+  <ion-fab vertical = "bottom" horizontal ="end" slot="fixed">
+    <!--add book to list-->
+    <ion-fab-button (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <app-explore-container name="{{title}} page"></app-explore-container>
+</ion-content>
